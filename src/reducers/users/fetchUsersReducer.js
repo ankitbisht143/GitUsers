@@ -8,7 +8,6 @@ const INITIAL_STATE = {
 }
 
 export default function fetchUsers(state=INITIAL_STATE,action){
-  console.log("action.user",action.user);
   switch (action.type) {
     case types.IS_LOADING:
       return{

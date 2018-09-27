@@ -15,10 +15,10 @@ const Home = props => {
         <Header searchBar rounded>
           <Item>
             <Icon name="search"/>
-            <Input onSubmitEditing={props.searchImages} placeholder="Search"
+            <Input onSubmitEditing={props.searchUser} placeholder="Search"
               onChangeText={(searchInput) => props.handleSearchInput(searchInput)}/>
           </Item>
-          <Button onPress={props.searchImages} transparent>
+          <Button onPress={props.searchUser} transparent>
             <Text>Search</Text>
           </Button>
         </Header>

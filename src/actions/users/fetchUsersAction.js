@@ -60,3 +60,17 @@ export function userDetails(userId){
       })
   }
 }
+
+export function searchUser(searchInput){
+  return dispatch => {
+    dispatch(isLoading());
+    return fetch(`${BASE_URL}/search/users?q=${searchInput}`)
+      .then((response) => {
+        if(response.status < 300){
+          response.json().then((responseJSON) => {
+            dispatch(usersFound(responseJSON))
+          })
+        }
+      })
+  }
+}

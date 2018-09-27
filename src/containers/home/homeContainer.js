@@ -9,7 +9,8 @@ class HomeContainer extends Component{
   constructor(props){
     super(props);
     this.state = {
-      users:[]
+      users:[],
+      searchInput:''
     }
   }
 
@@ -20,7 +21,12 @@ class HomeContainer extends Component{
   componentWillReceiveProps(nextProps){
     if(nextProps.users && nextProps.users.length > 0){
       this.setState({
-        users:nextProps.users
+        users: nextProps.users
+      })
+    }
+    if(nextProps.users.items && nextProps.users.items.length > 0){
+      this.setState({
+        users: nextProps.users.items
       })
     }
   }
@@ -40,10 +46,21 @@ class HomeContainer extends Component{
     })
   }
 
+  searchUser = () => {
+    this.props.searchUser(this.state.searchInput).then(() => {
+    })
+  }
+
+  handleSearchInput = (searchInput) => {
+    this.setState({
+      searchInput:searchInput
+    })
+  }
   render(){
     return(
-      <Home usersData={this.state.users} onPressUserProfile={(userId) => this.onPressUserProfile(userId)} 
-        loading={this.props.isLoading}/>
+      <Home usersData={this.state.users} onPressUserProfile={(userId) => this.onPressUserProfile(userId)}
+        loading={this.props.isLoading} handleSearchInput={(searchInput) => this.handleSearchInput(searchInput)}
+        searchUser={this.searchUser}/>
     )
   }
 }
@@ -55,7 +72,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   fetchUsers: () => dispatch(actions.fetchUsers()),
-  userDetails: (userId) => dispatch(actions.userDetails(userId))
+  userDetails: (userId) => dispatch(actions.userDetails(userId)),
+  searchUser: (searchInput) => dispatch(actions.searchUser(searchInput))
 })
 
 export default connect(mapStateToProps,mapDispatchToProps)(HomeContainer)
