@@ -37,10 +37,15 @@ class ProfileContainer extends Component{
     }
   }
 
+  onPressRepositories = (username) => {
+    this.props.navigation.navigate('repositories',{
+      username: username
+    })
+  }
   render(){
     return(
       <Profile loading={this.props.isLoading} user={this.state.user} onPressUserBlog={(blog) => this.onPressUserBlog(blog)}
-        onPressGitUrl={(gitUrl) => this.onPressGitUrl(gitUrl)}/>
+        onPressGitUrl={(gitUrl) => this.onPressGitUrl(gitUrl)} onPressRepositories={(username) => this.onPressRepositories(username)}/>
     )
   }
 }

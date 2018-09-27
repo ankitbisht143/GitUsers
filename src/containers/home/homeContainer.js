@@ -47,8 +47,9 @@ class HomeContainer extends Component{
   }
 
   searchUser = () => {
-    this.props.searchUser(this.state.searchInput).then(() => {
-    })
+    if(this.state.searchInput.length > 0){
+      this.props.searchUser(this.state.searchInput)
+    }
   }
 
   handleSearchInput = (searchInput) => {

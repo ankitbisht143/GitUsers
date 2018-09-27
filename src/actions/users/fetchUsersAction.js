@@ -14,6 +14,13 @@ export function usersFound(users){
   }
 }
 
+export function repositoriesFound(repositories){
+  return{
+    type:types.LIST_REPOSITORIES,
+    repositories
+  }
+}
+
 export function userNotFound(error){
   return{
     type:types.NOT_FOUND,
@@ -69,6 +76,20 @@ export function searchUser(searchInput){
         if(response.status < 300){
           response.json().then((responseJSON) => {
             dispatch(usersFound(responseJSON))
+          })
+        }
+      })
+  }
+}
+
+export function fetchRepositories(username){
+  return dispatch => {
+    dispatch(isLoading());
+    return fetch(`${BASE_URL}/users/${username}/repos`)
+      .then((response) => {
+        if(response.status < 300){
+          response.json().then((responseJSON) => {
+            dispatch(repositoriesFound(responseJSON))
           })
         }
       })

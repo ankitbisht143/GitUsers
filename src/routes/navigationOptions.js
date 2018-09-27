@@ -6,6 +6,12 @@ const profile={
 	headerTitleStyle:{fontSize:16, fontFamily:font.RALEWAY_BOLD, width:SCREEN_WIDTH},
 }
 
+const repositories={
+	title: 'REPOSITORIES',
+	headerTitleStyle:{fontSize:16, fontFamily:font.RALEWAY_BOLD, width:SCREEN_WIDTH},
+}
+
 export {
-	profile
+	profile,
+	repositories
 }

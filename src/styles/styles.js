@@ -83,5 +83,12 @@ export const styles = StyleSheet.create({
     color: 'black',
     fontFamily: fontFamily.ARGENTCF_REGULAR,
     textAlign:'center'
+  },
+  leftAlignSmallText: {
+    marginTop: 10,
+    color: 'gray',
+    fontFamily: fontFamily.ARGENTCF_REGULAR,
+    marginHorizontal:10,
+    fontSize:14
   }
 })

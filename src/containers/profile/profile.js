@@ -1,9 +1,8 @@
 import React from 'react';
-import {View, ScrollView} from 'react-native';
+import {View, ScrollView, TouchableOpacity} from 'react-native';
 
 import FastImage from 'react-native-fast-image'
 import { Container, Header, Icon, Text, Row} from 'native-base';
-import Lightbox from 'react-native-lightbox';
 import Spinner from 'react-native-loading-spinner-overlay';
 
 import {styles} from '../../styles/styles';
@@ -22,10 +21,10 @@ const Profile = props => {
             <Text style={centerAlignText}>{props.user.name}</Text>
             <Text style={[centerAlignText,{marginTop:5,color:'gray',fontSize:16}]}>{props.user.login}</Text>
             <View style={rowFlex}>
-              <View style={halfWidth}>
+              <TouchableOpacity style={halfWidth} onPress={() => props.onPressRepositories(props.user.login)}>
                 <Text style={halfWidthText}>Public Repositories</Text>
                 <Text style={[halfWidthText,{marginTop:5}]}>{props.user.public_repos}</Text>
-              </View>
+              </TouchableOpacity>
               <View style={halfWidth}>
                 <Text style={halfWidthText}>Public Gists</Text>
                 <Text style={[halfWidthText,{marginTop:5}]}>{props.user.public_gists}</Text>

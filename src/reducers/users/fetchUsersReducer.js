@@ -4,7 +4,8 @@ const INITIAL_STATE = {
   users:{},
   isLoading:false,
   error:undefined,
-  user:{}
+  user:{},
+  repositories:{}
 }
 
 export default function fetchUsers(state=INITIAL_STATE,action){
@@ -36,6 +37,13 @@ export default function fetchUsers(state=INITIAL_STATE,action){
         ...state,
         isLoading:false,
         user:action.user
+      }
+      break;
+    case types.LIST_REPOSITORIES:
+      return{
+        ...state,
+        isLoading:false,
+        repositories:action.repositories
       }
       break;
     default:
