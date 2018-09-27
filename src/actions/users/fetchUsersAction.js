@@ -21,6 +21,13 @@ export function userNotFound(error){
   }
 }
 
+export function userProfileFound(user){
+  return{
+    type:types.USER_PROFILE_FOUND,
+    user
+  }
+}
+
 export function fetchUsers(){
   return dispatch => {
     dispatch(isLoading());
@@ -36,14 +43,13 @@ export function fetchUsers(){
 }
 
 export function userDetails(userId){
-  console.log(`${BASE_URL}/users/${userId}`);
   return dispatch => {
     dispatch(isLoading());
     return fetch(`${BASE_URL}/users/${userId}`)
       .then((response) => {
         if(response.status < 300){
           response.json().then((responseJSON) => {
-            dispatch(usersFound(responseJSON))
+            dispatch(userProfileFound(responseJSON))
           })
         }
         else{

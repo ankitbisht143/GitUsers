@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Alert} from 'react-native'
+import {Alert, Linking} from 'react-native'
 import {connect} from 'react-redux';
 
 import Home from './home';
@@ -18,10 +18,11 @@ class HomeContainer extends Component{
   }
 
   componentWillReceiveProps(nextProps){
-    console.warn(nextProps.users.count);
-    this.setState({
-      users:nextProps.users
-    })
+    if(nextProps.users && nextProps.users.length > 0){
+      this.setState({
+        users:nextProps.users
+      })
+    }
   }
 
   userDetails(userId, inputType) {
@@ -33,15 +34,23 @@ class HomeContainer extends Component{
 
   }
 
+  onPressUserProfile = (userId) => {
+    this.props.navigation.navigate('userProfile',{
+      userId: userId
+    })
+  }
+
   render(){
     return(
-      <Home usersData={this.state.users} userDetails={(userId, inputType) => this.userDetails(userId, inputType)}/>
+      <Home usersData={this.state.users} onPressUserProfile={(userId) => this.onPressUserProfile(userId)} 
+        loading={this.props.isLoading}/>
     )
   }
 }
 
 const mapStateToProps = state => ({
   users: state.fetchUsers.users,
+  isLoading: state.fetchUsers.isLoading
 })
 
 const mapDispatchToProps = dispatch => ({

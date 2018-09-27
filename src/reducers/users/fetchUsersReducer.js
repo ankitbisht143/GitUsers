@@ -3,10 +3,12 @@ import * as types from '../../actions/types';
 const INITIAL_STATE = {
   users:{},
   isLoading:false,
-  error:undefined
+  error:undefined,
+  user:{}
 }
 
 export default function fetchUsers(state=INITIAL_STATE,action){
+  console.log("action.user",action.user);
   switch (action.type) {
     case types.IS_LOADING:
       return{
@@ -28,6 +30,13 @@ export default function fetchUsers(state=INITIAL_STATE,action){
         isLoading:false,
         users:action.users,
         error:action.error
+      }
+      break;
+    case types.USER_PROFILE_FOUND:
+      return{
+        ...state,
+        isLoading:false,
+        user:action.user
       }
       break;
     default:

@@ -2,9 +2,11 @@ import {StackNavigator, createStackNavigator} from 'react-navigation';
 import * as navigationOptions from './navigationOptions'
 
 import HomeScene from '../scenes/homeScene';
+import ProfileScene from '../scenes/profileScene';
 
 const MainNavigator = createStackNavigator({
   home:{screen:HomeScene,navigationOptions:{header:null}},
+  userProfile:{screen:ProfileScene,navigationOptions:navigationOptions.profile}
 },{
   navigationOptions: {
     gesturesEnabled: false,
