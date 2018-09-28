@@ -43,6 +43,12 @@ class ProfileContainer extends Component{
     })
   }
 
+  onPressGists = (username) => {
+    this.props.navigation.navigate('gists',{
+      username: username
+    })
+  }
+
   onPressFollowers = (username) => {
     this.props.navigation.navigate('followersFollowings',{
       username: username,
@@ -62,7 +68,7 @@ class ProfileContainer extends Component{
       <Profile loading={this.props.isLoading} user={this.state.user} onPressUserBlog={(blog) => this.onPressUserBlog(blog)}
          onPressRepositories={(username) => this.onPressRepositories(username)}
          onPressFollowers={(username) => this.onPressFollowers(username)} onPressGitUrl={(gitUrl) => this.onPressGitUrl(gitUrl)}
-         onPressFollowings={(username) => this.onPressFollowings(username)}/>
+         onPressFollowings={(username) => this.onPressFollowings(username)} onPressGists={(username) => this.onPressGists(username)}/>
     )
   }
 }

@@ -25,9 +25,16 @@ class RepositoriesContainer extends Component{
     }
   }
 
+  onPressRepositories = (url) => {
+    console.log(url);
+    if(url){
+      Linking.openURL(url)
+    }
+  }
+
   render(){
     return(
-      <Repositories repositories={this.state.repositories}/>
+      <Repositories repositories={this.state.repositories} onPressRepositories={(url) => this.onPressRepositories(url)}/>
     )
   }
 }

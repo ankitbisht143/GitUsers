@@ -26,8 +26,10 @@ const Profile = props => {
                 <Text style={[halfWidthText,{marginTop:5}]}>{props.user.public_repos}</Text>
               </TouchableOpacity>
               <View style={halfWidth}>
-                <Text style={halfWidthText}>Public Gists</Text>
-                <Text style={[halfWidthText,{marginTop:5}]}>{props.user.public_gists}</Text>
+                <TouchableOpacity style={halfWidth} onPress={() => props.onPressGists(props.user.login)}>
+                  <Text style={halfWidthText}>Public Gists</Text>
+                  <Text style={[halfWidthText,{marginTop:5}]}>{props.user.public_gists}</Text>
+                </TouchableOpacity>
               </View>
             </View>
             <View style={rowFlex}>

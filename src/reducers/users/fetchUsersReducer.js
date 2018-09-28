@@ -1,11 +1,12 @@
 import * as types from '../../actions/types';
 
 const INITIAL_STATE = {
-  users:{},
-  isLoading:false,
-  error:undefined,
-  user:{},
-  repositories:{}
+  users: {},
+  isLoading: false,
+  error: undefined,
+  user: {},
+  repositories: {},
+  gists: {}
 }
 
 export default function fetchUsers(state=INITIAL_STATE,action){
@@ -44,6 +45,13 @@ export default function fetchUsers(state=INITIAL_STATE,action){
         ...state,
         isLoading:false,
         repositories:action.repositories
+      }
+      break;
+    case types.LIST_GISTS:
+      return{
+        ...state,
+        isLoading:false,
+        gists:action.gists
       }
       break;
     case types.STOP_LOADING:

@@ -10,16 +10,16 @@ import {styles} from '../../styles/styles';
 import NativeButton from '../../components/button';
 import * as fontFamily from '../../constants/fontFamily';
 
-const Repositories = props => {
+const Gists = props => {
     const {transButton, transButtonTxtStyle, leftAlignSmallText, lineSeperator} = styles;
     return(
       <Container>
       <Content contentContainerStyle={{flex: 1}}>
-        <FlatList data={props.repositories} keyExtractor={(x,i) => i} renderItem={({item,index}) =>
+        <FlatList data={props.gists} keyExtractor={(x,i) => i} renderItem={({item,index}) =>
           <View style={{marginTop:5}}>
-            <TouchableOpacity onPress={() => props.onPressRepositories(item.html_url)}>
+            <TouchableOpacity onPress={() => props.onPressGists(item.html_url)}>
               <Text style={[leftAlignSmallText,{color:'#3b5998', fontSize:16, fontFamily:fontFamily.ARGENTCF_BOLD}]}>
-                {item.name}
+                Gist {index}
               </Text>
               <Text style={[leftAlignSmallText,{marginTop:5}]}>Updated on {moment(item.updated_at,'YYYYMMDD').fromNow()}</Text>
               <View style={[lineSeperator,{marginTop:15}]}/>
@@ -31,4 +31,4 @@ const Repositories = props => {
     )
 }
 
-export default Repositories;
+export default Gists;

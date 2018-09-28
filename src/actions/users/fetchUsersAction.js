@@ -41,6 +41,13 @@ export function stopLoading(){
   }
 }
 
+export function gistsFound(gists){
+  return{
+    type:types.LIST_GISTS,
+    gists
+  }
+}
+
 export function fetchUsers(){
   return dispatch => {
     dispatch(isLoading());
@@ -102,6 +109,23 @@ export function fetchRepositories(username){
         if(response.status < 300){
           response.json().then((responseJSON) => {
             dispatch(repositoriesFound(responseJSON))
+          })
+        }
+        else {
+          dispatch(stopLoading())
+        }
+      })
+  }
+}
+
+export function fetchGists(username){
+  return dispatch => {
+    dispatch(isLoading());
+    return fetch(`${BASE_URL}/users/${username}/gists`)
+      .then((response) => {
+        if(response.status < 300){
+          response.json().then((responseJSON) => {
+            dispatch(gistsFound(responseJSON))
           })
         }
         else {
