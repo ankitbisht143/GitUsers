@@ -18,7 +18,7 @@ class FollowersFollowingsContainer extends Component{
         this.props.fetchUsersFollowersFollowings(this.props.navigation.getParam('username'), 'followers')
     }
     else{
-      this.props.fetchUsersFollowersFollowings(this.props.navigation.getParam('username'), 'followings')
+      this.props.fetchUsersFollowersFollowings(this.props.navigation.getParam('username'), 'following')
     }
   }
 

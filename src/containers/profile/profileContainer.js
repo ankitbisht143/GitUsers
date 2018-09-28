@@ -59,7 +59,7 @@ class ProfileContainer extends Component{
   onPressFollowings = (username) => {
     this.props.navigation.navigate('followersFollowings',{
       username: username,
-      fetchType: 'followings'
+      fetchType: 'following'
     })
   }
   render(){
