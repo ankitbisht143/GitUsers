@@ -35,6 +35,12 @@ export function userProfileFound(user){
   }
 }
 
+export function stopLoading(){
+  return{
+    type:types.STOP_LOADING,
+  }
+}
+
 export function fetchUsers(){
   return dispatch => {
     dispatch(isLoading());
@@ -44,6 +50,9 @@ export function fetchUsers(){
           response.json().then((responseJSON) => {
             dispatch(usersFound(responseJSON))
           })
+        }
+        else {
+          dispatch(stopLoading())
         }
       })
   }
@@ -78,6 +87,9 @@ export function searchUser(searchInput){
             dispatch(usersFound(responseJSON))
           })
         }
+        else {
+          dispatch(stopLoading())
+        }
       })
   }
 }
@@ -91,6 +103,28 @@ export function fetchRepositories(username){
           response.json().then((responseJSON) => {
             dispatch(repositoriesFound(responseJSON))
           })
+        }
+        else {
+          dispatch(stopLoading())
+        }
+      })
+  }
+}
+
+export function fetchUsersFollowersFollowings(username, fetchType){
+  console.log(`${BASE_URL}/users/${username}/${fetchType}`);
+  return dispatch => {
+    dispatch(isLoading());
+    return fetch(`${BASE_URL}/users/${username}/${fetchType}`)
+      .then((response) => {
+        if(response.status < 300){
+          response.json().then((responseJSON) => {
+            console.log(responseJSON);
+            dispatch(usersFound(responseJSON))
+          })
+        }
+        else {
+          dispatch(stopLoading())
         }
       })
   }

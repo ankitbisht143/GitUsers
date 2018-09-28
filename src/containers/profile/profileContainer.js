@@ -42,10 +42,27 @@ class ProfileContainer extends Component{
       username: username
     })
   }
+
+  onPressFollowers = (username) => {
+    this.props.navigation.navigate('followersFollowings',{
+      username: username,
+      fetchType: 'followers'
+    })
+  }
+
+  onPressFollowings = (username) => {
+    this.props.navigation.navigate('followersFollowings',{
+      username: username,
+      fetchType: 'followings'
+    })
+  }
   render(){
+
     return(
       <Profile loading={this.props.isLoading} user={this.state.user} onPressUserBlog={(blog) => this.onPressUserBlog(blog)}
-        onPressGitUrl={(gitUrl) => this.onPressGitUrl(gitUrl)} onPressRepositories={(username) => this.onPressRepositories(username)}/>
+         onPressRepositories={(username) => this.onPressRepositories(username)}
+         onPressFollowers={(username) => this.onPressFollowers(username)} onPressGitUrl={(gitUrl) => this.onPressGitUrl(gitUrl)}
+         onPressFollowings={(username) => this.onPressFollowings(username)}/>
     )
   }
 }

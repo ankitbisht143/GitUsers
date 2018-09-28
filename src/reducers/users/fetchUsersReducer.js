@@ -46,6 +46,12 @@ export default function fetchUsers(state=INITIAL_STATE,action){
         repositories:action.repositories
       }
       break;
+    case types.STOP_LOADING:
+      return{
+        ...state,
+        isLoading:false
+      }
+      break;
     default:
       return state
   }

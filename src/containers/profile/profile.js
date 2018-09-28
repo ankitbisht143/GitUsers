@@ -31,13 +31,17 @@ const Profile = props => {
               </View>
             </View>
             <View style={rowFlex}>
+              <TouchableOpacity style={halfWidth} onPress={() => props.onPressFollowers(props.user.login)}>
+                <View style={halfWidth}>
+                  <Text style={halfWidthText}>Followers</Text>
+                  <Text style={[halfWidthText,{marginTop:5}]}>{props.user.followers}</Text>
+                </View>
+              </TouchableOpacity>
               <View style={halfWidth}>
-                <Text style={halfWidthText}>Followers</Text>
-                <Text style={[halfWidthText,{marginTop:5}]}>{props.user.followers}</Text>
-              </View>
-              <View style={halfWidth}>
-                <Text style={halfWidthText}>Followings</Text>
-                <Text style={[halfWidthText,{marginTop:5}]}>{props.user.following}</Text>
+                <TouchableOpacity style={halfWidth} onPress={() => props.onPressFollowings(props.user.login)}>
+                  <Text style={halfWidthText}>Followings</Text>
+                  <Text style={[halfWidthText,{marginTop:5}]}>{props.user.following}</Text>
+                </TouchableOpacity>
               </View>
             </View>
           </View>

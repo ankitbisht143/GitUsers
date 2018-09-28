@@ -11,7 +11,12 @@ const repositories={
 	headerTitleStyle:{fontSize:16, fontFamily:font.RALEWAY_BOLD, width:SCREEN_WIDTH},
 }
 
+const followersFollowings={
+	title: 'USERS',
+	headerTitleStyle:{fontSize:16, fontFamily:font.RALEWAY_BOLD, width:SCREEN_WIDTH},
+}
 export {
 	profile,
-	repositories
+	repositories,
+	followersFollowings
 }
